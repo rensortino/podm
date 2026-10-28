@@ -4,13 +4,23 @@
 [![Python](https://img.shields.io/badge/python-3.11%2B-blue.svg)](https://www.python.org/)
 [![PyTorch](https://img.shields.io/badge/pytorch-2.0+-red.svg)](https://pytorch.org/)
 
-This project provides a hands-on exploration of diffusion models, derived from first principles and grounded in the foundational concepts presented in the [The Principles of Diffusion Models](https://arxiv.org/pdf/2510.21890). The goal is to implement key ideas step-by-step, ensuring deep understanding through code and going back to the basics id necessary.
+This project provides a hands-on exploration of diffusion models, derived from first principles and grounded in the foundational concepts presented in the [The Principles of Diffusion Models](https://arxiv.org/pdf/2510.21890). The goal is to implement key ideas step-by-step, ensuring deep understanding through code and going back to the basics if necessary.
 
 ## 📚 Overview
 
 Diffusion models are a class of generative models that have gained significant attention for their ability to generate high-quality samples across various domains (e.g., images, audio, and molecules). This project breaks down the mathematics and algorithms behind diffusion models into digestible components, with implementations in PyTorch.
 
 
+
+## 🤖 Learning with an AI agent
+
+This repo is a personal learning project, worked through with an AI coding agent ([Claude Code](https://claude.com/claude-code)) as a tutor rather than as an author. The agent built the scaffolding (roadmap, exercise stubs, tests); the implementations are written by me. Its roles, defined in [CLAUDE.md](CLAUDE.md):
+
+- **Mentor:** builds intuition for a concept with explanations, minimal examples and interactive demos.
+- **Teaching assistant:** Socratic tutoring, quizzes and hints when I'm stuck, without handing over solutions.
+- **Grader:** runs a module's tests on my attempt and gives a ladder of hints, never the corrected code.
+
+Each exercise is developed on its own branch and merged through its own PR, so the history records how the understanding was built, module by module.
 
 ## 🚀 Getting started
 
