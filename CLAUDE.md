@@ -11,7 +11,7 @@ A self-study course: implementing diffusion models from first principles, follow
 - **Do not fill in `raise NotImplementedError("TODO")` stubs** in `exercises/*/<topic>.py` unless the user explicitly asks for a solution. Default to hints: point at the book section, the relevant equation in the docstring, or what the failing test checks.
 - When asked to review an attempt, run that module's tests and explain failures in terms of the math, not just the code.
 - New modules follow the existing layout (README with book pages / stub file / test file) and get a row in `ROADMAP.md`. Validate new tests against a reference solution kept outside the repo, then ship only stubs.
-- The paper PDF is not committed. To consult it: `mkdir -p paper && curl -sL -o paper/podm.pdf https://arxiv.org/pdf/2510.21890` (`paper/` is git-ignored). Page numbers in READMEs/ROADMAP are PDF pages.
+- Papers live in `literature/`: `papers.tsv` is the committed index, PDFs are git-ignored, `./literature/fetch.sh` downloads anything missing. The main text is `literature/podm_principles_of_diffusion_models.pdf`; page numbers in READMEs/ROADMAP are its PDF pages. When a module draws on another paper (DDPM, NCSN, Score SDE, flow matching, EDM, DPM-Solver, consistency models, MeanFlow, …), add it to `papers.tsv` and the table in `literature/README.md`.
 
 ## Who handles what
 
@@ -23,7 +23,7 @@ Route learner requests to the right helper instead of answering everything inlin
 | Stuck on an exercise, "quiz me", "walk me through the derivation", checking understanding before/after a module | **Teaching assistant** — `learn` skill (Socratic tutoring) | Diagnose first, one step per turn, hints over answers. Use the module README's "Check your understanding" questions as quiz material. |
 | "Check my attempt", "grade module NN", "why does this test fail" | **Grader** — `exercise-grader` agent (`.claude/agents/`) | Runs tests, gives a hint ladder, never writes the solution. Afterwards update the module's Status in `ROADMAP.md`. |
 | Reordering/extending the course, adding a module | **Plan** agent, then implement here | New modules follow the layout below; ship stubs only. |
-| Finding where something is defined in the book | Download the PDF (see above) and read the relevant pages | Page numbers in READMEs are PDF pages. |
+| Finding where something is defined in the book | Read the relevant pages of the PDF in `literature/` | Page numbers in READMEs are PDF pages. |
 
 At the start of a session: read `ROADMAP.md`, find the `doing` module, and offer the natural next step (TA quiz on the reading, mentor explainer, or grading).
 
@@ -32,7 +32,7 @@ At the start of a session: read `ROADMAP.md`, find the `doing` module, and offer
 - Each module gets its own branch off up-to-date `main`: `exercise/NN-topic` (e.g. `exercise/01-generative-basics`), and its own PR titled `Module NN: <Topic>`.
 - Commits on an exercise branch touch **only** that module: `exercises/NN_topic/` (implemented stubs, `intuition/` material, experiment scripts) plus that module's Status row / Log line in `ROADMAP.md`. Nothing else.
 - Anything not specific to one exercise (`podm/`, `CLAUDE.md`, `pyproject.toml`, new or restructured modules, `.claude/`) goes on a separate `chore/<topic>` branch and PR. If such a change is needed mid-exercise, stash it, branch from `main`, and PR it separately.
-- Stage files explicitly by path (never `git add -A` / `git add .`); check `git diff --cached --stat` before committing. `runs/`, `data/`, `paper/` are git-ignored and never committed.
+- Stage files explicitly by path (never `git add -A` / `git add .`); check `git diff --cached --stat` before committing. `runs/`, `data/`, `literature/*.pdf` are git-ignored and never committed.
 - Open the PR with `gh pr create` once the module's tests pass (a draft PR earlier is fine). The body lists test status, experiments run (with key plots/numbers) and open questions.
 - Push over HTTPS with gh credentials (SSH is unavailable): `git -c credential.helper= -c credential.helper='!gh auth git-credential' push -u https://github.com/rensortino/podm.git <branch>`.
 

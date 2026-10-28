@@ -4,7 +4,7 @@ __pycache__/
 .pytest_cache/
 .ipynb_checkpoints/
 data/
-paper/
+literature/*.pdf
 runs/
 *.pt
 *.png
